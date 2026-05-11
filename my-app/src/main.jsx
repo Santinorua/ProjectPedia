@@ -4,7 +4,8 @@ import "./index.css";
 import MiniProject from "./miniProject.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <div class="w-full h-full">
+    <div className="flex flex-wrap w-full h-full">
+      <MiniProject />
       <MiniProject />
     </div>
   </StrictMode>,
