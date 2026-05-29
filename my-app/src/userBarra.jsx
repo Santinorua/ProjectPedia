@@ -5,8 +5,10 @@ function UserBarra(logueado){
     
     } else {
         return (
-            <Boton texto="Iniciar Sesión" color="var(--lightBlue)" onClick={() => console.log("Iniciar Sesión")} />
-            // <Boton texto="Registrarse" color="var(--lightGray)" onClick={() => console.log("Registrarse")} />
+            <div class="flex gap-4">
+                <Boton texto="Iniciar Sesión" color="var(--lightBlue)" onClick={() => console.log("Iniciar Sesión")} />
+                <Boton texto="Registrarse" color="var(--gray)" onClick={() => console.log("Registrarse")} />
+            </div>
         )
     }
 }

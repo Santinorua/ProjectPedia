@@ -18,5 +18,15 @@ html, body {
     --white: #ffffff;
     --lightGray: #f0f0f0;
     --lightBlue: #57bcdd;
+    --gray: #cccccc;
+}
+
+.boton {
+    background-color: var(--boton-color, transparent);
+    transition: background-color 0.2s ease;
+}
+
+.boton:hover {
+    background-color: color-mix(in srgb, var(--boton-color, transparent) 85%, black);
 }
 
