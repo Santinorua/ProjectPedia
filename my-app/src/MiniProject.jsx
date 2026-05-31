@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-function MiniProject({ title, description, image, category }) {
+function MiniProject({ id, title, description, image, category }) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/project/${title}`);
+    navigate(`/project/${id}`);
   };
   return (
     <div
