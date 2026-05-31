@@ -11,4 +11,13 @@ body {
 #root {
     height: 100%;
     width: 100%;
+
+    --lightBlue: #aedde6;
+    --blue: #67d4e6;
+    --lightGray: #f0f0f0;
+    --gray: #665e5c;
+}
+
+@theme {
+    --text-tag: 0.8rem;
 }
