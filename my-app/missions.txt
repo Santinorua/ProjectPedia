@@ -1,0 +1,5 @@
+Categorías predefinidas (un select)
+Filtros para las categorías
+Botón de iniciar sesión en registrarse y viceversa
+que New Project sea un botón flotante
+Los tests para
