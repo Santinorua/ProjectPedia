@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "./supabase";
+import Boton from "./boton";
+import { useNavigate } from "react-router-dom";
 
 function Project() {
-  const { id } = useParams();
   const navigate = useNavigate();
+
+  const { id } = useParams();
 
   const [project, setProject] = useState(null);
   useEffect(() => {
@@ -29,8 +31,14 @@ function Project() {
   if (!project) {
     return <p>Loading...</p>;
   }
+
   return (
     <div className="relative mb-8">
+      <Boton
+        texto="Edit"
+        color="var(--lightBlue)"
+        onClick={() => navigate("../../edit/" + id)}
+      />
       <h1 className="text-center text-4xl font-bold">{project.title}</h1>
       <div className="w-full max-w-4xl mx-auto h-96 overflow-hidden rounded-xl">
         <img
