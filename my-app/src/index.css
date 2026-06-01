@@ -1,12 +1,12 @@
 @import "tailwindcss";
-
-html, body {
+tml,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
 }
-  
+
 #root {
     height: 100%;
     width: 100%;
@@ -14,11 +14,17 @@ html, body {
     flex-direction: column;
 
 
-    /* Colores */
     --white: #ffffff;
     --lightGray: #f0f0f0;
     --lightBlue: #57bcdd;
     --gray: #cccccc;
+    --blue: #67d4e6;
+    --lightGray: #f0f0f0;
+    --gray: #665e5c;
+}
+
+@theme {
+    --text-tag: 0.8rem;
 }
 
 .boton {
@@ -29,4 +35,3 @@ html, body {
 .boton:hover {
     background-color: color-mix(in srgb, var(--boton-color, transparent) 85%, black);
 }
-
