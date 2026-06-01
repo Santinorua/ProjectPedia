@@ -2,12 +2,15 @@ import { supabase } from "./supabase";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "./authContext.jsx";
 
 function EditProject() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { user } = useAuth();
 
   const [loading, setLoading] = useState(true);
+  const [project, setProject] = useState(null);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -26,9 +29,21 @@ function EditProject() {
 
       if (error) {
         console.error(error);
+        setLoading(false);
         return;
       }
 
+      if (
+        user?.id == null ||
+        data.owner == null ||
+        String(user.id) !== String(data.owner)
+      ) {
+        alert("You are not allowed to edit this project.");
+        navigate(`/project/${id}`);
+        return;
+      }
+
+      setProject(data);
       setTitle(data.title);
       setDescription(data.description);
       setImage(data.image);
@@ -40,9 +55,17 @@ function EditProject() {
     }
 
     loadProject();
-  }, [id]);
+  }, [id, navigate, user]);
   async function handleSubmit(e) {
     e.preventDefault();
+    if (
+      user?.id == null ||
+      project?.owner == null ||
+      String(user.id) !== String(project.owner)
+    ) {
+      alert("You are not the owner of this project.");
+      return;
+    }
 
     const { error } = await supabase
       .from("projects")

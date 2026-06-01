@@ -1,12 +1,15 @@
 import { supabase } from "./supabase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./authContext.jsx";
 
 function CreateProject() {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [owner, setOwner] = useState(user?.id || null);
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
   const [creators, setCreators] = useState("");
@@ -20,6 +23,7 @@ function CreateProject() {
     const { data, error } = await supabase.from("projects").insert([
       {
         id,
+        owner: user?.id,
         title,
         description,
         image,

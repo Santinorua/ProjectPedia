@@ -3,13 +3,16 @@ import { useEffect, useState } from "react";
 import { supabase } from "./supabase";
 import Boton from "./boton";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./authContext.jsx";
 
 function Project() {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const { id } = useParams();
 
   const [project, setProject] = useState(null);
+
   useEffect(() => {
     async function loadProject() {
       const { data, error } = await supabase
@@ -32,13 +35,23 @@ function Project() {
     return <p>Loading...</p>;
   }
 
+  const canEdit = Boolean(
+    user?.id != null &&
+      project?.owner != null &&
+      String(user?.id) === String(project?.owner)
+  );
+  console.log("Project owner:", project.owner);
+  console.log("Current user ID:", user?.id);
+  
   return (
     <div className="relative mb-8">
-      <Boton
-        texto="Edit"
-        color="var(--lightBlue)"
-        onClick={() => navigate("../../edit/" + id)}
-      />
+      {canEdit && (
+        <Boton
+          texto="Edit"
+          color="var(--lightBlue)"
+          onClick={() => navigate(`/edit/${id}`)}
+        />
+      )}
       <h1 className="text-center text-4xl font-bold">{project.title}</h1>
       <div className="w-full max-w-4xl mx-auto h-96 overflow-hidden rounded-xl">
         <img

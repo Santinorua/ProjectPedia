@@ -24,11 +24,11 @@ function Login({ showLogin, setShowLogin, isLoggingIn, setIsLoggingIn }) {
               return;
             }
 
-                        login({
-                            id: data.id,
-                            username: data.username,
-                            email: data.email,
-                        });
+            login({
+                id: data.id,
+                username: data.username,
+                email: data.email,
+            });
             
         } else {
             const { data, error } = await supabase.from("users").insert([
