@@ -21,6 +21,7 @@ body {
     --blue: #67d4e6;
     --lightGray: #f0f0f0;
     --gray: #665e5c;
+    --red: #e63636;
 }
 
 @theme {
