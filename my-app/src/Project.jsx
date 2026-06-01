@@ -6,9 +6,6 @@ import { supabase } from "./supabase";
 function Project() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const returnHome = () => {
-    navigate(`/`);
-  };
 
   const [project, setProject] = useState(null);
   useEffect(() => {
@@ -34,13 +31,6 @@ function Project() {
   }
   return (
     <div className="relative mb-8">
-      <button
-        onClick={returnHome}
-        className="absolute left-2 top-2 px-2 py-1 bg-(--lightBlue) text-(--gray) text-sm rounded-lg hover:bg-(--blue)"
-      >
-        Home
-      </button>
-
       <h1 className="text-center text-4xl font-bold">{project.title}</h1>
       <div className="w-full max-w-4xl mx-auto h-96 overflow-hidden rounded-xl">
         <img

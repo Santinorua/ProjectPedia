@@ -9,8 +9,8 @@ import BarraSuperior from './barraSuperior'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BarraSuperior/>
     <BrowserRouter>
+      <BarraSuperior/>
       <App />
     </BrowserRouter>
   </StrictMode>,
