@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css'
 import App from './App.jsx'
 import { AuthProvider } from "./authContext.jsx";
+import { SearchProvider } from "./searchContext";
 
 import PanelProyectos from "./panelProyectos"
 import BarraSuperior from './barraSuperior'
@@ -11,10 +12,12 @@ import BarraSuperior from './barraSuperior'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <BarraSuperior/>
-        <App />
-      </BrowserRouter>
+      <SearchProvider>
+        <BrowserRouter>
+          <BarraSuperior/>
+          <App />
+        </BrowserRouter>
+      </SearchProvider>
     </AuthProvider>
   </StrictMode>,
 );

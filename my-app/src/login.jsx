@@ -66,41 +66,52 @@ function Login({ showLogin, setShowLogin, isLoggingIn, setIsLoggingIn }) {
             return null;
         } else{
             return (
-                <div className="fixed inset-y-1/6 inset-x-1/3 bg-[var(--white)] border border-[var(--lightGray)] rounded-xl z-50">
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
-                        {!isLoggingIn ? (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+                    onClick={() => setShowLogin(false)}
+                >
+                    <div
+                        className="w-full max-w-md rounded-xl bg-[var(--white)] shadow-xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4">
+                            <h2>
+                                {isLoggingIn ? "Login" : "Sign Up"}
+                            </h2>
+                            {!isLoggingIn ? (
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    className="border rounded-lg p-2"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            ): null}
                             <input
-                                type="email"
-                                placeholder="Email"
+                                type="text"
+                                placeholder="Username"
                                 className="border rounded-lg p-2"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
                                 required
                             />
-                        ): null}
-                        <input
-                            type="text"
-                            placeholder="Username"
-                            className="border rounded-lg p-2"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"  
-                            className="border rounded-lg p-2"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="submit"
-                            className="bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600"
-                        >
-                            Login
-                        </button>
-                    </form>
+                            <input
+                                type="password"
+                                placeholder="Password"  
+                                className="border rounded-lg p-2"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <button
+                                type="submit"
+                                className="bg-blue-500 text-white rounded-lg p-2 hover:bg-blue-600"
+                            >
+                                {isLoggingIn ? "Login" : "Sign Up"}
+                            </button>
+                        </form>
+                    </div>
                 </div>
             )
         }

@@ -3,8 +3,10 @@ import { supabase } from "./supabase";
 import MiniProject from "./MiniProject.jsx";
 import Boton from "./boton.jsx";
 import { useNavigate } from "react-router-dom";
+import { useSearch } from "./searchContext";
 
 function Home() {
+  const { search: textoBuscado } = useSearch();
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -27,16 +29,22 @@ function Home() {
       </div>
       
       <div className="flex flex-wrap justify-center gap-4 p-4 w-full">
-        {projects.map((project) => (
-          <MiniProject
-            key={project.key}
-            id={project.id}
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            category={project.category}
-          />
-        ))}
+        {projects.map((project) => {
+          if (project.title?.toLowerCase().includes(textoBuscado.toLowerCase())) {
+            return (
+              <MiniProject
+                key={project.id}
+                id={project.id}
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                category={project.category}
+              />
+            )
+          } else{
+            return null;
+          }
+        })}
       </div>
     </div>
     

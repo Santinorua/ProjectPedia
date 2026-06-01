@@ -20,7 +20,7 @@ function BarraSuperior(){
         <div className="w-full h-[9%] bg-[var(--lightGray)] flex items-center">
             <div className="w-1/6 h-full">
                 <button className="pl-4 h-full cursor-pointer" onClick={returnHome} >
-                    <img src="src/assets/logo.png" alt="" className="h-full" />
+                    <img src="src/assets/logo.png" alt="ProjectPedia" className="h-full" />
                 </button>
                 
             </div>
