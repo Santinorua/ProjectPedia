@@ -94,14 +94,18 @@ function CreateProject() {
           required
         />
 
-        <input
-          type="text"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="border rounded-lg p-2"
+        <select 
+          value={category} 
+          onChange={(e) => setCategory(e.target.value)} 
+          className="border rounded-lg p-2" 
           required
-        />
+        >
+          <option value="" disabled>Select a Category</option>
+          <option value="videogame">Videogame</option>
+          <option value="ai">AI</option>
+          <option value="website">Website</option>
+          <option value="hardware">Hardware</option>
+        </select>
 
         <button
           type="submit"
