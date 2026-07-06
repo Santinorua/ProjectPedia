@@ -9,6 +9,17 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    babel({ presets: [reactCompilerPreset()] })
+    babel({ presets: [
+      reactCompilerPreset(),
+      '@babel/preset-react'
+    ] })
   ],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.test.js",
+    coverage: {
+      provider: "v8",
+    },
+  }
 })

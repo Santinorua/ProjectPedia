@@ -1,4 +1,4 @@
-import { useSearch } from "./searchContext";
+import React, { useSearch } from "./searchContext";
 
 function BarraBusqueda() {
     const { search, setSearch } = useSearch();
