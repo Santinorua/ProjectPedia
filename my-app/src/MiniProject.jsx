@@ -1,6 +1,9 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function MiniProject({ id, title, description, image, category }) {
+function MiniProject(props) {
+  const project = props.project ?? props;
+  const { id, title, description, image, category } = project;
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/project/${id}`);
@@ -18,7 +21,8 @@ function MiniProject({ id, title, description, image, category }) {
         <h1 className="text-black font-bold text-lg leading-tight">{title}</h1>
         <p className="text-(--gray) text-sm">{description}</p>
         <p className="inline-block bg-blue-100 px-3 py-0.6 rounded-full text-tag">
-          #{category}
+          <span aria-hidden="true">#</span>
+          <span>{category}</span>
         </p>
       </div>
     </div>

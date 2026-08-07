@@ -1,6 +1,7 @@
 import React from "react";
 
-function Boton({texto, color, onClick}) {
+function Boton({ texto, text, color, onClick }) {
+    const label = texto ?? text;
 
     const style = color ? { "--boton-color": color } : undefined;
 
@@ -10,7 +11,7 @@ function Boton({texto, color, onClick}) {
             className="boton text-b font-bold py-2 px-4 rounded cursor-pointer select-none"
             onClick={onClick}
         >
-            {texto}
+            {label}
         </button>
     )
 }
